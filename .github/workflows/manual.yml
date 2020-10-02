@@ -23,6 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Sync
-      #run: node dist/index.js
-      uses: action.yml  
+      - uses: actions/checkout@master
+      - name: Update gist
+        uses: mplibunao/wakatime-sync@master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID}}
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          SCU_KEY: ${{ secrets.SCU_KEY }}
